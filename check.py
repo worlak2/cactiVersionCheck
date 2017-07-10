@@ -20,6 +20,10 @@ def get_all_vrsion(html):
     return version
 
 
+if (requests.get("http://" + yourHost + "/cacti/install/").status_code == 200):
+    yourHost = yourHost + "/cacti/install/"
+else:
+    yourHost = yourHost + "/install/"
 ark = get_all_vrsion(r.text)
 textt = ''
 textt += str(ark)
@@ -42,13 +46,13 @@ while i < final.__len__():
     if final[i] == "0.8.8":
         while d != 8:
             sendtourl = "0_8_8" + "_" + "to_" + final[i + 1].replace(".", "_") + ".php"
-            r = requests.get("http://" + yourHost + "/cacti/install/" + sendtourl.replace(" ", ""))
+            r = requests.get("http://" + yourHost + sendtourl.replace(" ", ""))
             if r.status_code == 200:
                 cactiversion = sendtourl.replace(" ", "")
             d += 1
             i += 1
     sendtourl = final[i].replace(".", "_") + "_" + "to_" + final[i + 1].replace(".", "_") + ".php"
-    r = requests.get("http://" + yourHost + "/cacti/install/" + sendtourl.replace(" ", ""))
+    r = requests.get("http://" + yourHost + sendtourl.replace(" ", ""))
     if r.status_code == 200:
         cactiversion = sendtourl.replace(" ", "")
     i += 1
