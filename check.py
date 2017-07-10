@@ -3,7 +3,7 @@ import sys
 
 from bs4 import BeautifulSoup
 
-yourHost = str(input("vvedite host without http\n"))
+yourHost = str(input("enter host without http\n"))
 url = 'https://www.cacti.net/'
 r = requests.get(url)
 versionText = 'version='
