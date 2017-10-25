@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser(
     description='Command-line tool for Cacti version check')
 parser.add_argument('-H', '--host', help='Host to check', type=str)
 parser.add_argument(
-    '-p',
+    '-P',
     '--port',
     help='Port on which Cacti is located',
     type=str)
