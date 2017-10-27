@@ -35,12 +35,10 @@ finalVersion = r.text[start + len(versionText):end]
 url = 'https://www.cacti.net/changelog.php'
 r = requests.get(url)
 
-
 def get_all_version(html):
     soup = BeautifulSoup(html, 'lxml')
     version = soup.find_all('td', class_='textParagraphHeading')
     return version
-
 
 if requests.get('http://' + yourHost + ':' + port +
                 '/cacti/install/').status_code == 200:
