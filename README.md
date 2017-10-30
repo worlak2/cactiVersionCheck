@@ -1,2 +1,2 @@
 # cactiVersionCheck
-Install bs4 , lxml
+Install bs4 , lxml, tqdm
