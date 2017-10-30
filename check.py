@@ -4,6 +4,7 @@ import argparse
 from tqdm import tqdm
 requests.packages.urllib3.disable_warnings()
 from bs4 import BeautifulSoup
+
 __author__ = 'worlak2 & Cibvetr'
 __version__ = '0.1'
 
@@ -85,5 +86,5 @@ for i in tqdm(range(final.__len__())):
     i += 1
 
 totext = cactiversion.find('to_')
-print(cactiversion)
+print("\n"+cactiversion)
 print('your version\n' + cactiversion[totext + 3:-4].replace('_', '.'))
