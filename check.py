@@ -57,12 +57,14 @@ new = textt.replace('</td>, <td class="textParagraphHeading">', '')
 new1 = new.replace('</td>]', '')
 new = new1.replace('[<td class="textParagraphHeading">', '')
 final = new.replace('\t', '')
-final = final.split('\n')
+final1=final.replace(" ",'')
+final = final1.split('\n')
 final.insert(0, finalVersion)
 final.remove('')
 i = 0
 d = 0
 final.reverse()
+
 cactiversion = ''
 
 for i in tqdm(range(final.__len__())):
