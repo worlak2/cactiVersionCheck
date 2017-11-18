@@ -1,5 +1,5 @@
 # Cacti Version Check
-mScan script can fingerprint Cacti monitoring system. It's also trying to get a list of known CVE for this version.
+script can fingerprint Cacti monitoring system. It's also trying to get a list of known CVE for this version.
 
 python 3 required
 
