@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import requests
 import sys
 import argparse
@@ -10,18 +12,19 @@ requests.packages.urllib3.disable_warnings()
 __author__ = 'worlak2 & Cibvetr'
 __version__ = '0.1'
 
-parser = \
-    argparse.ArgumentParser(description='Command-line tool for Cacti version check'
-                            )
+parser = argparse.ArgumentParser(
+    description='Command-line tool for Cacti version check')
 parser.add_argument('-H', '--host', help='Host to check', type=str)
-parser.add_argument('-p', '--port',
-                    help='Port on which Cacti is located', type=str)
+parser.add_argument(
+    '-p',
+    '--port',
+    help='Port on which Cacti is located',
+    type=str)
 args = parser.parse_args()
 vulners_api = Vulners()
 
 if args.host is None:
-    print(
-        'See help -h --help')
+    print('See help -h --help')
     sys.exit()
 else:
     yourHost = args.host
@@ -70,7 +73,8 @@ end = final.index('1.1.0')
 
 # before 1.0.1
 
-# noinspection PyShadowingNames,PyShadowingNames,PyShadowingNames,PyShadowingNames,PyShadowingNames,PyShadowingNames,PyShadowingNames
+# noinspection
+# PyShadowingNames,PyShadowingNames,PyShadowingNames,PyShadowingNames,PyShadowingNames,PyShadowingNames,PyShadowingNames
 
 def before(your_host):
     global cactiversion
@@ -80,16 +84,16 @@ def before(your_host):
             break
         if final[i] == '0.8.8':
             while d != 8:
-                sendtourl = '0_8_8' + '_' + 'to_' + final[i
-                                                          + 1].replace('.', '_') + '.php'
+                sendtourl = '0_8_8' + '_' + 'to_' + \
+                    final[i + 1].replace('.', '_') + '.php'
                 r = requests.get('http://' + your_host
                                  + sendtourl.replace(' ', ''))
                 if r.status_code == 200:
                     cactiversion = sendtourl.replace(' ', '')
                 d += 1
                 i += 1
-        sendtourl = final[i].replace('.', '_') + '_' + 'to_' + final[i
-                                                                     + 1].replace('.', '_') + '.php'
+        sendtourl = final[i].replace(
+            '.', '_') + '_' + 'to_' + final[i + 1].replace('.', '_') + '.php'
         r = requests.get('http://' + your_host + sendtourl.replace(' ',
                                                                    ''))
         if r.status_code == 200:
@@ -103,7 +107,8 @@ def before(your_host):
     return version
 
 
-# noinspection PyShadowingNames,PyShadowingNames,PyShadowingNames,PyShadowingNames,PyShadowingNames
+# noinspection
+# PyShadowingNames,PyShadowingNames,PyShadowingNames,PyShadowingNames,PyShadowingNames
 
 def new_fast(your_host):
     global cactiversion
@@ -156,7 +161,7 @@ if requests.get('http://' + yourHost + ':' + port + '/cacti/install/'
                 ).status_code == 200:
     maybe = fastcheck('http://' + yourHost + ':' + port + '/cacti/')
     if requests.get('http://' + yourHost + ':' + port
-                            + '/cacti/install/upgrades/').status_code == 200:
+                    + '/cacti/install/upgrades/').status_code == 200:
         yourHost = yourHost + ':' + port + '/cacti/install/upgrades/'
         version = new_fast(yourHost)
     else:
@@ -166,7 +171,7 @@ else:
 
     maybe = fastcheck('http://' + yourHost + ':' + port + '/')
     if requests.get('http://' + yourHost + ':' + port
-                            + '/install/upgrades/').status_code == 200:
+                    + '/install/upgrades/').status_code == 200:
         yourHost = yourHost + ':' + port + '/install/upgrades/'
         version = new_fast(yourHost)
     else:
@@ -176,7 +181,7 @@ else:
 # noinspection PyBroadException
 
 print(
-    '\nVersion to fast Check ' + str(maybe) \
+    '\nVersion to fast Check ' + str(maybe)
     + '\nVersion to file check ' + str(version))
 
 if str(version) != str(maybe):
