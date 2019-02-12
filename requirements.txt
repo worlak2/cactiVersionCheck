@@ -2,3 +2,5 @@ bs4
 lxml
 tqdm
 vulners
+requests
+argparse
